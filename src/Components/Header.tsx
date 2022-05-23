@@ -11,10 +11,11 @@ const Nav = styled(motion.nav)`
   position: fixed;
   width: 100%;
   top: 0;
-  background-color: black;
+  background: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
   font-size: 14px;
   padding: 20px 60px;
   color: white;
+  z-index: 9;
 `;
 
 const Col = styled.div`
@@ -112,6 +113,7 @@ interface IForm {
 function Header() {
   const [searchOpen, setSearchOpen] = useState(false);
   const homeMatch = useMatch("/");
+  const moviesMatch = useMatch("movies");
   const tvMatch = useMatch("tv");
   const inputAnimation = useAnimation();
   const navAnimation = useAnimation();
@@ -160,6 +162,11 @@ function Header() {
         <Items>
           <Item>
             <Link to="/">Home{homeMatch && <Circle layoutId="circle" />}</Link>
+          </Item>
+          <Item>
+            <Link to="movies">
+              Movies{moviesMatch && <Circle layoutId="circle" />}
+            </Link>
           </Item>
           <Item>
             <Link to="tv">
